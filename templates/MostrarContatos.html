@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+<div id="wrap" >
+
+
+
+ <div class="container">
+
+            <div id="login-overlay" class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+             <a href="/homepage/"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></a>
+             {% if v_contatos %}
+                    <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-user"></span>Contatos Cadastrados</h4>
+             {% else %}
+                   <font color =#ff3c00.> <h4 class="modal-title" id="myModalLabel">Atençao!! Nao foi encontrado nenhum registro!!</h4></font>
+              {% endif %}
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="well">
+
+                                 <table class="table table-striped" >
+                                        <thead>
+                                        <th>Contato</th>
+                                        <th>Nome da Cidade</th>
+                                        <th>Estado</th>
+                                        <th>Ações</th>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in v_contatos %}
+                                            <tr>
+                                                <td width="150px">{{ i.nome }}</td>
+                                                <td width="100px">{{ i.cidade }}</td>
+                                                <td width="100px">{{ i.email }}|{{ i.pk }}</td>
+                                                <td>
+                                                    <a class="label label-info" href="/contato/{{ i.pk }}">Editar</a>
+                                                    <a class="label label-danger" href="/contato/excluir/{{ i.pk }}">Excluir</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+
+
+
+
+
+
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+ </div> <!-- fim container principal -->
+
+
+
+</div>
+
+{% endblock %}

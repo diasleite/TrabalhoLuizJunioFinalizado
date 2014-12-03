@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+<div id="wrap" >
+
+
+
+ <div class="container">
+
+            <div id="login-overlay" class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+             <a href="/homepage/"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></a>
+             {% if v_produtos %}
+                    <h4 class="modal-title" id="myModalLabel"></span>Produtos Cadastrados</h4>
+             {% else %}
+                   <font color =#ff3c00.> <h4 class="modal-title" id="myModalLabel">Atençao!! Nao foi encontrado nenhum registro!!</h4></font>
+              {% endif %}
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="well">
+
+                                 <table class="table table-striped" style="border: 2">
+                                        <thead>
+                                            <th>Descricao</th>
+                                            <th >Cod.Barras</th>
+                                            <th >Preço</th>
+                                            <th>Ações</th>
+                                            </thead>
+                                        <tbody>
+                                        {% for i in v_produtos %}
+                                            <tr>
+                                                <td width="150px">{{ i.descricao }}</td>
+                                                <td width="100px" >{{ i.barrasCod }}</td>
+                                                <td width="130px" >R$ {{ i.PrecoVenda }} / {{ i.unidade }}</td>
+                                                <td width="120px">
+                                                    <a class="label label-info" href="/produto/{{ i.pk }}">Editar</a>
+                                                    <a class="label label-danger" href="/produto/excluir/{{ i.pk }}">Excluir</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+
+
+
+
+
+
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+ </div> <!-- fim container principal -->
+
+
+
+</div>
+
+{% endblock %}

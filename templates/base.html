@@ -1,0 +1,189 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ STATIC_URL }}favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+
+
+
+
+     <!-- Bootstrap core CSS -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="{{ STATIC_URL }}js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ STATIC_URL }}js/ie-emulation-modes-warning.js"></script>
+
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+    <script>
+          function codBarras(){}
+
+          function jsFunction(){
+                var myselect = document.getElementById("selectOpt");
+
+                alert(myselect.options[myselect.selectedIndex].value);
+          }
+          function placehol(){
+                var dark = document.createElement('div');
+                dark.setAttribute("style","placeholder:placeholder");
+                dark.setAttribute("id","dark");
+                document.body.appendChild(dark);
+        }
+
+
+        {% block scriptjava %}
+
+
+        {% endblock %}
+    </script>
+</head>
+<body >
+
+
+
+
+
+
+
+
+        <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0;">
+  <div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-bootsnipp-collapse">
+      <span class="sr-only"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="animbrand"><a class="navbar-brand" href="/homepage/"><span class="glyphicon glyphicon-usd"></span>FinanceiroJR</a></div>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-bootsnipp-collapse">
+    <ul class="nav navbar-nav">
+         <li class="active"><a href="/homepage/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+         <li class="dropdown ">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"></span>  Funções <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                        <li class="dropdown-header">Caixa</li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-cog"></span> Abrir </a></li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-ok"></span> Fechar </a></li>
+                            <li><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-barcode"></span> Vender </a></li>
+
+                        <li class="divider"></li>
+
+                         <li class="dropdown-header">Produto|Estoque</li>
+                         <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-th-large"></span> Entrada </a></li>
+                         <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-random"></span> Alterar Preço </a></li>
+                         <li><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-tags"></span> Cadastrar Promoção </a></li>
+
+                        <li class="divider"></li>
+                 </ul>
+         </li>
+
+
+
+         <li class="dropdown ">
+
+                 <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Cadastro <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+                 <li class="dropdown-header">Contato</li>
+                 <li class=""><a href="/contato/novo/"> <span class="glyphicon glyphicon-plus"></span> Cadastrar </a></li>
+                 <li class=""><a href="/contato/search"><span class="glyphicon glyphicon-align-justify"></span> Listar|Pesquisar </a></li>
+
+
+                 <li class="divider"></li>
+
+                    <li class="dropdown-header"><span class="glyphicon glyphicon-th"></span> Produto</li>
+                    <li class=""><a href="/produto/novo/" ><span class="glyphicon glyphicon-plus"></span> Cadastrar </a></li>
+                     <li class=""><a href="/produto/search/"><span class="glyphicon glyphicon-align-justify"></span> Listar|Pesquisar </a></li>
+
+
+                 <li class="divider"></li>
+
+              </ul>
+        </li>
+
+            <li class="dropdown ">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span>  Relatórios <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                        <li class="dropdown-header">Venda</li>
+                        <li class=""><a href="/faltaimplementacao/" ><span class="glyphicon glyphicon-user"></span> Fornecedor </a></li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-calendar"></span> Data </a></li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-sort-by-attributes"></span> +Vendidos </a></li>
+
+                        <li class="divider"></li>
+
+                        <li class="dropdown-header">Compra</li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-user"></span> Fornecedor </a></li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-calendar"></span> Data </a></li>
+
+
+                        <li class="divider"></li>
+
+                        <li class="dropdown-header">Estoque</li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-user"></span> Fornecedor </a></li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-cog"></span> Qtda Estoque </a></li>
+                        <li class=""><a href="/faltaimplementacao/"><span class="glyphicon glyphicon-time"></span> Validade </a></li>
+
+                        <li class="divider"></li>
+
+
+                 </ul>
+         </li>
+
+
+         </ul>
+
+
+
+    <ul class="nav navbar-nav navbar-right">
+            <li class=""><a href="/about/"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+         </ul>
+  </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+
+
+{% block conteudo %}
+{% endblock %}
+
+
+
+
+
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ STATIC_URL }}js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+
+<nav class="navbar navbar-fixed-bottom" role="navigation"></nav>
+</body>
+</html>

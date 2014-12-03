@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+
+{% block scriptjava %}
+
+
+{% endblock %}
+
+{% block conteudo %}
+
+
+    <div id="wrap" xmlns="http://www.w3.org/1999/html">
+         <div class="container">
+            <div id="login-overlay" class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="/homepage/"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></a>
+                        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-th"></span>Produtos</h4>
+                        {% if v_produtos %}
+
+
+                        {% else %}
+                            <font color =#ff3c00.> <h4 class="modal-title" id="myModalLabel">Atençao!! Nao foi encontrado nenhum registro com o FILTRO!!</h4></font>
+                        Obs.: Atualizado para todos os registros no banco.<a href="/produto/novo/"> Clique e cadastre um produto</a>
+                        {% endif %}
+
+                        <div align="center"><font font-size="1"  color =#ff3c00> <h4 >
+                        {% if msgAoUsuario %}
+                            {{ msgAoUsuario }}
+                        {% endif %}
+
+                        </h4></font></div>
+
+                    </div>
+
+
+                    <div class="modal-header">
+                        <form method="POST" action="/produto/search/">
+                            {% csrf_token%}
+                            <div class="row" align="center">
+                                   <div  class="col-md-4"align="center">
+                                                 <select name="searchcombobox"class="form-control" id="selectOpt">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Descricao">Descrição</option>
+                                                    <option value="CodBarras">Cod. de Barras</option>
+                                                    <option value="Status">Status( A | I )</option>
+                                                 </select>
+
+                                   </div>
+
+
+
+                                   <div class="col-md-6"align="center">
+                                                 <input class="form-control" id="search" placeholder="Search" type="text" name="valorProcurado">
+                                   </div>
+                                   <div class="col-md-2"align="left">
+                                        <input type="submit" class="btn btn-block btn-info" value="Pesquisar" id="inputsearch">
+                                   </div>
+
+                        </form>
+                    </div>
+                    <div align="right">
+                          <font color="#ffd700" > {{ filtradopor }}   </font><br>
+                             <font font-size=1 color="#ffd700" > {{ qtdadeRegis }}
+                                {% if qtdadeRegis %}
+                                 Registro(s)
+                                {% endif %}
+                             </font>
+                    </div>
+                   <div class="modal-body">
+                   <div class="row">
+                     <div class="col-xs-13">
+                         <div class="well">
+                            {% if v_produtos %}
+                             <table class="table table-striped" >
+                                  <thead>
+                                        <th>Descricao</th>
+                                        <th>Cod.Barras</th>
+                                        <th>Preço</th>
+                                        <th>Estoque</th>
+                                        <th>Ações</th>
+                                        </thead>
+                                  <tbody>
+                                     {% for i in v_produtos %}
+                                        <tr>
+                                           <td width="200px">{{ i.descricao }}</td>
+                                           <td width="60px">{{ i.barrasCod }}</td>
+                                           <td width="140px"> R$ {{ i.PrecoVenda }} / {{ i.unidade }}</td>
+                                           <td width="60px">{{ i.quantidade }} {{ i.unidade }}(s)</td>
+                                           <td width="120px">
+                                                    <a class="label label-info" href="/produto/{{ i.pk }}">Editar</a>
+                                                    <a class="label label-danger" href="/produto/excluir/{{ i.pk }}">Excluir</a>
+                                           </td>
+                                        </tr>
+                                     {% endfor %}
+                                  </tbody>
+                             </table>
+                            {% endif %}
+                         </div>
+                      </div>
+                </div>
+               </div>
+            </div>
+         </div>
+    </div>
+ </div> <!-- fim container principal -->
+
+
+
+
+
+{% endblock %}

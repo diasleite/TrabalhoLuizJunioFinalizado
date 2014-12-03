@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+
+{% block scriptjava %}
+
+
+{% endblock %}
+
+{% block conteudo %}
+
+
+    <div id="wrap" xmlns="http://www.w3.org/1999/html">
+         <div class="container">
+            <div id="login-overlay" class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="/homepage/"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></a>
+                        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-user"></span>Contatos</h4>
+                        {% if v_contatos %}
+
+
+                        {% else %}
+                            <font color =#ff3c00.> <h4 class="modal-title" id="myModalLabel">Atençao!! Nao foi encontrado nenhum registro com o FILTRO!!</h4></font>
+                        Obs.: Atualizado para todos os registros no banco.
+                        {% endif %}
+
+                        <div align="center"><font font-size="1"  color =#ff3c00> <h4 >
+                        {% if msgAoUsuario %}
+                            {{ msgAoUsuario }}
+                        {% endif %}
+
+                        </h4></font></div>
+
+                    </div>
+
+                    <div class="modal-header">
+                        <form method="POST" action="/contato/search/">
+                            {% csrf_token%}
+                            <div class="row" align="center">
+                                   <div  class="col-md-4"align="center">
+                                                 <select name="searchcombobox"class="form-control" id="selectOpt">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Nome">Nome</option>
+                                                    <option value="Cidade">Cidade</option>
+                                                    <option value="E-mail">E-mail</option>
+                                                 </select>
+
+                                   </div>
+
+
+
+                                   <div class="col-md-6"align="center">
+                                                 <input class="form-control" id="search" placeholder="Search" type="text" name="valorProcurado">
+                                   </div>
+                                   <div class="col-md-2"align="left">
+                                        <input type="submit" class="btn btn-block btn-info" value="Pesquisar" id="inputsearch">
+                                   </div>
+
+                        </form>
+                    </div>
+                    <div align="right">
+                          <font color="#ffd700" > {{ filtradopor }}   </font><br>
+                             <font font-size=1 color="#ffd700" > {{ qtdadeRegis }}
+                                {% if qtdadeRegis %}
+                                 Registro(s)
+                                {% endif %}
+                             </font>
+                    </div>
+                   <div class="modal-body">
+                   <div class="row">
+                     <div class="col-xs-13">
+                         <div class="well">
+                            {% if v_contatos %}
+                             <table class="table table-striped" >
+                                  <thead>
+                                        <th>Contato</th>
+                                        <th>Nome da Cidade</th>
+                                        <th>Estado</th>
+                                        <th>Ações</th>
+                                        </thead>
+                                  <tbody>
+                                     {% for i in v_contatos %}
+                                        <tr>
+                                           <td width="150px">{{ i.nome }}</td>
+                                           <td width="100px">{{ i.cidade }}</td>
+                                           <td width="100px">{{ i.email }}</td>
+                                           <td>
+                                                    <a class="label label-info" href="/contato/{{ i.pk }}">Editar</a>
+                                                    <a class="label label-danger" href="/contato/excluir/{{ i.pk }}">Excluir</a>
+                                           </td>
+                                        </tr>
+                                     {% endfor %}
+                                  </tbody>
+                             </table>
+                            {% endif %}
+                         </div>
+                      </div>
+                </div>
+               </div>
+            </div>
+         </div>
+    </div>
+ </div> <!-- fim container principal -->
+
+
+
+
+
+{% endblock %}
